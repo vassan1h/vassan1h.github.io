@@ -45,10 +45,10 @@ navbar-links:
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
   email: "vassanthmathan03@gmail.com"
-  rss: true  # remove this line if you don't want to show an RSS link at the bottom
+  #rss: true  # remove this line if you don't want to show an RSS link at the bottom
   github: vassan1h
-  whatsapp: 15551212
-  linkedin: vassanthmathan
+  whatsapp: +15752946407
+  linkedin: vassanth-mathan-95bb65299
   #  ORCID: your ORCID ID
 #  google-scholar: your google scholar
 #  spotify: yourname
