@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vassan1h.github.io/sitemap-index.xml

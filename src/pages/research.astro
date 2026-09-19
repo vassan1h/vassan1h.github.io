@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { research } from "../data/research";
+---
+
+<BaseLayout title="Research" description={research.intro}>
+  <h1>Research</h1>
+  <p>{research.intro}</p>
+
+  <h2>Domains</h2>
+  {
+    research.domains.map((domain) => (
+      <div class="card">
+        <strong>{domain.title}:</strong> {domain.description}
+      </div>
+    ))
+  }
+
+  <h2>Methods and tooling</h2>
+  {
+    research.methods.map((method) => (
+      <div class="card">
+        <strong>{method.title}:</strong> {method.description}
+      </div>
+    ))
+  }
+
+  <h2>Collaboration interests</h2>
+  <p>{research.collaboration}</p>
+</BaseLayout>
