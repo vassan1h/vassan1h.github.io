@@ -1,5 +1,6 @@
 export const profile = {
   name: "Vassanth Mathan",
+  greeting: "Hi, I'm Vassanth.",
   tagline:
     "Computational Biologist building reproducible multi-omics pipelines for translational research",
   intro: [

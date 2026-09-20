@@ -1,11 +1,20 @@
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
 :root {
   --color-bg: #ffffff;
+  --color-bg-alt: #f7f4ee;
   --color-text: #1f2328;
   --color-text-muted: #57606a;
   --color-link: #0969da;
   --color-border: #d0d7de;
-  --color-surface: #f6f8fa;
-  --max-width: 42rem;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --max-width: 46rem;
 }
 
 * {
@@ -13,6 +22,7 @@
 }
 
 html {
+  scroll-behavior: smooth;
   color-scheme: light;
 }
 
@@ -20,12 +30,7 @@ body {
   margin: 0;
   background: var(--color-bg);
   color: var(--color-text);
-  font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
 }
 
@@ -43,8 +48,14 @@ a:not(:hover) {
   padding: 0 1.25rem;
 }
 
+/* --- header / nav --- */
+
 .site-header {
   border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .site-header .container {
@@ -57,52 +68,168 @@ a:not(:hover) {
 }
 
 .site-title {
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text);
 }
 
 .site-nav {
   display: flex;
   gap: 1.25rem;
   flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
 }
 
-.site-nav a[aria-current="page"] {
-  font-weight: 600;
+.site-nav a {
+  color: var(--color-text-muted);
+}
+
+.site-nav a[aria-current="true"] {
   color: var(--color-text);
+  font-weight: 600;
 }
 
-main {
-  padding-block: 2.5rem;
+/* --- sections that alternate background --- */
+
+.section {
+  padding-block: 4rem;
+}
+
+.section:nth-of-type(odd) {
+  background: var(--color-bg);
+}
+
+.section:nth-of-type(even) {
+  background: var(--color-bg-alt);
+}
+
+.section h2 {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* --- hero --- */
+
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.hero-avatar {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
 }
 
 .hero h1 {
-  margin-bottom: 0.25rem;
+  font-size: 2rem;
+  margin: 0 0 0.25rem;
 }
 
 .hero p.tagline {
   color: var(--color-text-muted);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  max-width: 38rem;
 }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  background: transparent;
+}
+
+.button:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* --- about --- */
+
+.about-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  max-width: 24rem;
+}
+
+.about-photos img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+/* --- cards / grids --- */
 
 ul.plain {
   padding-left: 1.1rem;
 }
 
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
 .card {
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  padding: 1rem 1.25rem;
-  background: var(--color-surface);
-  margin-bottom: 1rem;
+  padding: 1.25rem;
+  background: var(--color-bg);
 }
+
+.card h3,
+.card h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+
+/* --- footer --- */
 
 .site-footer {
   border-top: 1px solid var(--color-border);
-  margin-top: 3rem;
   padding-block: 1.5rem;
   color: var(--color-text-muted);
   font-size: 0.9rem;
+  font-family: var(--font-mono);
 }
 
 .skip-link {
@@ -116,5 +243,5 @@ ul.plain {
   top: 1rem;
   background: var(--color-bg);
   padding: 0.5rem 1rem;
-  z-index: 10;
+  z-index: 20;
 }

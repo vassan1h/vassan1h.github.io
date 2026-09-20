@@ -1,0 +1,14 @@
+---
+import { profile } from "../data/profile";
+import { research } from "../data/research";
+---
+
+<section id="currently" class="section currently">
+  <div class="container">
+    <h2>Currently</h2>
+    <ul class="plain">
+      {profile.currentFocus.map((item) => <li>{item}</li>)}
+    </ul>
+    <p>{research.collaboration}</p>
+  </div>
+</section>

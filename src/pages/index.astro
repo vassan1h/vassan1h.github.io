@@ -1,29 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import Currently from "../components/Currently.astro";
+import Contact from "../components/Contact.astro";
 import { profile } from "../data/profile";
 ---
 
 <BaseLayout title="Home" description={profile.tagline}>
-  <section class="hero">
-    <h1>{profile.name}</h1>
-    <p class="tagline">{profile.tagline}</p>
-    {profile.intro.map((paragraph) => <p>{paragraph}</p>)}
-  </section>
-
-  <section>
-    <h2>Current focus</h2>
-    <ul class="plain">
-      {profile.currentFocus.map((item) => <li>{item}</li>)}
-    </ul>
-  </section>
-
-  <section>
-    <h2>Quick links</h2>
-    <ul class="plain">
-      <li><a href="/about">About me</a></li>
-      <li><a href="/research">Research</a></li>
-      <li><a href="/cv">Curriculum Vitae</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-  </section>
+  <Hero />
+  <About />
+  <Projects />
+  <Currently />
+  <Contact />
 </BaseLayout>

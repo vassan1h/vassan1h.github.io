@@ -1,0 +1,33 @@
+---
+import { profile } from "../data/profile";
+import { research } from "../data/research";
+---
+
+<section id="about" class="section about">
+  <div class="container">
+    <h2>About</h2>
+    {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
+
+    <!-- TODO: add more photos here — only one is on file right now -->
+    <div class="about-photos">
+      <img src="/assets/img/profile.jpg" alt={profile.name} />
+    </div>
+
+    <h3>Research focus</h3>
+    <ul class="plain">
+      {research.domains.map((domain) => <li><strong>{domain.title}:</strong> {domain.description}</li>)}
+    </ul>
+
+    <h3>Technical arsenal</h3>
+    <div class="card-grid">
+      {
+        Object.entries(profile.skills).map(([title, description]) => (
+          <div class="card">
+            <h4>{title}</h4>
+            <p>{description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

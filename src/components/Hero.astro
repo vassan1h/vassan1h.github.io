@@ -1,0 +1,14 @@
+---
+import { profile } from "../data/profile";
+---
+
+<section id="home" class="section hero">
+  <div class="container">
+    <img class="hero-avatar" src="/assets/img/profile.jpg" alt={profile.name} />
+    <div>
+      <h1>{profile.greeting}</h1>
+      <p class="tagline">{profile.tagline}</p>
+    </div>
+    <a class="button" href="/assets/data/resume.pdf" download>Download résumé</a>
+  </div>
+</section>

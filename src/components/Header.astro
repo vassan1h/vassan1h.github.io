@@ -2,31 +2,53 @@
 import { profile } from "../data/profile";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/research", label: "Research" },
-  { href: "/cv", label: "CV" },
-  { href: "/contact", label: "Contact" },
+  { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
+  { href: "#currently", label: "Currently" },
+  { href: "#contact", label: "Contact" },
 ];
-
-const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
 <header class="site-header">
   <div class="container">
-    <a class="site-title" href="/">{profile.name}</a>
+    <a class="site-title" href="#">{profile.name}</a>
     <nav class="site-nav" aria-label="Primary">
       {
-        links.map((link) => {
-          const isActive =
-            link.href === "/" ? currentPath === "/" : currentPath.startsWith(link.href);
-          return (
-            <a href={link.href} aria-current={isActive ? "page" : undefined}>
-              {link.label}
-            </a>
-          );
-        })
+        links.map((link) => (
+          <a href={link.href} data-section={link.href.slice(1)}>
+            {link.label}
+          </a>
+        ))
       }
     </nav>
   </div>
 </header>
+
+<script>
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>(".site-nav a[data-section]");
+  const sections = Array.from(navLinks)
+    .map((link) => document.getElementById(link.dataset.section ?? ""))
+    .filter((el): el is HTMLElement => el !== null);
+
+  if (sections.length > 0) {
+    const setActive = (id: string | null) => {
+      navLinks.forEach((link) => {
+        const isActive = link.dataset.section === id;
+        link.toggleAttribute("aria-current", isActive);
+        if (isActive) link.setAttribute("aria-current", "true");
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>
