@@ -204,6 +204,11 @@ ul.plain {
   font-size: 1.05rem;
 }
 
+.disease-mechanism {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
