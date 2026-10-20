@@ -8,6 +8,8 @@ import { research } from "../data/research";
     <h2>About</h2>
     {profile.bio.map((paragraph) => <p>{paragraph}</p>)}
 
+    <p class="research-interests"><strong>Research interests:</strong> {profile.researchInterests}</p>
+
     <!-- TODO: add more photos here — only one is on file right now -->
     <div class="about-photos">
       <img src="/assets/img/profile.jpg" alt={profile.name} />
