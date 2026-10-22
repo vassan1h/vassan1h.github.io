@@ -1,17 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Projects from "../components/Projects.astro";
-import Currently from "../components/Currently.astro";
-import Contact from "../components/Contact.astro";
+import LoadingSplash from "../components/LoadingSplash.astro";
 import { profile } from "../data/profile";
+
+// Full page (Hero/About/Projects/Currently/Contact) is paused while content
+// is being finished. To restore it, swap LoadingSplash back for those
+// components below — they're untouched in src/components/.
 ---
 
-<BaseLayout title="Home" description={profile.tagline}>
-  <Hero />
-  <About />
-  <Projects />
-  <Currently />
-  <Contact />
+<BaseLayout title="Home" description={profile.tagline} showNav={false}>
+  <LoadingSplash />
 </BaseLayout>

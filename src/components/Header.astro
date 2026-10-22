@@ -1,6 +1,12 @@
 ---
 import { profile } from "../data/profile";
 
+interface Props {
+  showNav?: boolean;
+}
+
+const { showNav = true } = Astro.props;
+
 const links = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
@@ -12,15 +18,17 @@ const links = [
 <header class="site-header">
   <div class="container">
     <a class="site-title" href="#">{profile.name}</a>
-    <nav class="site-nav" aria-label="Primary">
-      {
-        links.map((link) => (
-          <a href={link.href} data-section={link.href.slice(1)}>
-            {link.label}
-          </a>
-        ))
-      }
-    </nav>
+    {
+      showNav && (
+        <nav class="site-nav" aria-label="Primary">
+          {links.map((link) => (
+            <a href={link.href} data-section={link.href.slice(1)}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      )
+    }
   </div>
 </header>
 
